@@ -12,11 +12,16 @@ public class OdenData
         _type = type;
         _imageIcon = Resources.Load<Sprite>(type.ToString());
     }
+
+    public OdenType Type => _type;
+
+    public Sprite ImageIcon => _imageIcon;
 }
 
 public enum OdenType
 { 
     konnyaku,
     daikon,
-    hanpen
+    hanpen,
+    max
 }
