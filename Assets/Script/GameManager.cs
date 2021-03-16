@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] Text _scoreText;
+    [SerializeField] Text _timeText;
     [SerializeField] float _timeRimit;
-    [SerializeField] int _maxOder;
+    int _score;
     GameStatus _nowStatus;
     // Start is called before the first frame update
     void Start()
     {
-        
+        AddScore(0);
     }
 
     // Update is called once per frame
@@ -40,6 +41,13 @@ public class GameManager : MonoBehaviour
     public void DecleaceTime()
     {
         _timeRimit -= Time.deltaTime;
+        _timeText.text = $"Time:{_timeRimit}";
+    }
+
+    public void AddScore(int score)
+    {
+        _score += score;
+        _scoreText.text = $"Score:{score}";
     }
 }
 public enum GameStatus
