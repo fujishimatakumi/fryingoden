@@ -44,7 +44,13 @@ public class OdenObjectController : MonoBehaviour
             if (collision.gameObject.TryGetComponent(out controller))
             {
                 //プレイヤーに接触した場合の処理を書く
+                controller.OdenDatas.Add(_data);
+                Destroy(gameObject);
             }
+        }
+        else if (collision.gameObject.CompareTag("Destroyer"))
+        {
+            Destroy(gameObject);
         }
     }
 }
