@@ -41,13 +41,13 @@ public class GameManager : MonoBehaviour
     public void DecleaceTime()
     {
         _timeRimit -= Time.deltaTime;
-        _timeText.text = $"Time:{_timeRimit}";
+        _timeText.text = $"Time:{_timeRimit:0.00}";
     }
 
     public void AddScore(int score)
     {
         _score += score;
-        _scoreText.text = $"Score:{score}";
+        _scoreText.text = $"Score:{_score}";
     }
 }
 public enum GameStatus
