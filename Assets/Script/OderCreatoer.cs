@@ -9,16 +9,7 @@ public class OderCreatoer : MonoBehaviour
     [SerializeField] int _maxOder;
     [SerializeField] Image[] _imageIcons;
     OdenData[] _datas;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
     public void CreateOder(int oderNum)
     {
@@ -37,16 +28,6 @@ public class OderCreatoer : MonoBehaviour
         }
     }
 
-    public bool CheckOder(OdenData[] datas)
-    {
-        for (int i = 0; i < datas.Length; i++)
-        {
-            if (_datas[i].Type != datas[i].Type)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+    
 
 }
