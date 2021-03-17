@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class CharaController : MonoBehaviour
 {
-    Vector3 zRivision;
-    CursorStatus status;
+    Vector3 _zRivision;
+    CursorStatus _status;
+    List<OdenData> _odenDatas;
+
+    public List<OdenData> OdenDatas => _odenDatas;
     // Start is called before the first frame update
     void Start()
     {
+        _odenDatas = new List<OdenData>();
         DisableCursor();
-        zRivision = new Vector3(0, 0, 10);
+        _zRivision = new Vector3(0, 0, 10);
     }
 
     // Update is called once per frame
@@ -22,16 +26,16 @@ public class CharaController : MonoBehaviour
 
     private void Move()
     {
-        this.gameObject.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + zRivision;
+        this.gameObject.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + _zRivision;
     }
 
     private void CursorChange()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && status is CursorStatus.diseable)
+        if (Input.GetKeyDown(KeyCode.Escape) && _status is CursorStatus.diseable)
         {
             EnubleCursor();
         }
-        if (Input.GetButtonDown("Fire1") && status is CursorStatus.enuble)
+        if (Input.GetButtonDown("Fire1") && _status is CursorStatus.enuble)
         {
             DisableCursor();
         }
@@ -41,14 +45,21 @@ public class CharaController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        status = CursorStatus.enuble;
+        _status = CursorStatus.enuble;
     }
 
     private void DisableCursor()
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
-        status = CursorStatus.diseable;
+        _status = CursorStatus.diseable;
+    }
+
+    public OdenData[] ToArry()
+    {
+        OdenData[] odenDataArry = _odenDatas.ToArray();
+        _odenDatas.Clear();
+        return odenDataArry;
     }
 }
 
